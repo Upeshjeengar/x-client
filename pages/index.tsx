@@ -10,6 +10,8 @@ import { FaRegMinusSquare } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import FeedCard from "@/components/FeedCard";
 import { SlOptions } from "react-icons/sl";
+import { CredentialResponse, GoogleLogin } from "@react-oauth/google";
+import { useCallback } from "react";
 
 
 interface TwitterSidebarButton{
@@ -57,6 +59,10 @@ const SideBarMenuItems: TwitterSidebarButton[]=[
 ]
 
 export default function Home() {
+  const handleLoginwithGoogle=useCallback((cred:CredentialResponse)=>{
+    
+  },[]);
+
   return (
   <div >
     <div className="grid grid-cols-12 h-screen w-screen px-56">
@@ -92,6 +98,12 @@ export default function Home() {
         <FeedCard/>
       </div>
 
+      <div className="col-span-3">
+        <div className="border p-5 bg-slate-700 rounded-lg">
+          <h1 className="my-2 text-2xl">New to X?</h1>
+          <GoogleLogin onSuccess={(cred)=>console.log(cred)}/>
+        </div>
+      </div>
       {/* Right Side Bar */}
       <div className="col-span-3"></div>
     </div>
